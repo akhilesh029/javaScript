@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color changer</title>
+    <style>
+        body{
+            margin-top: 200px;
+            margin-left: 100px;
+            /* margin-right: 1000px; */
+            background-color: #cbf4cdda;
+        }
+        .container{
+            align-items: center;
+            display: flex;
+            gap: 20px;
+            border: 2px solid rgb(8, 84, 117);
+            padding: 20px 10px;
+            background-color: rgb(25, 115, 131);
+            border-radius: 5px;
+            box-shadow: 4px 3px 8px ;
+            width: 300px;
+        }
+        .btn{
+            text-align: center;
+            border: 2px solid black;
+            /* margin-bottom: 10px; */
+            display: flex;
+            display: inline-block;
+            width: 60px;
+            height: 70px; 
+            color: white;
+            
+        }
+        #red{
+            background-color: rgb(210, 20, 20);
+        }
+        #yellow{
+            background-color: yellow;
+        }
+        #blue{
+            background-color: blue;
+        }
+        #green{
+            background-color:rgb(40, 204, 40);
+        }
+        #black{
+            background-color: black;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>BackGround-Color changer</h1><br>
+     <h3>Click on Buttons to change BG-color</h3>
+    <div class="container">
+
+        <div class="btn" id="red"></div>
+        <div class="btn" id="yellow"></div>
+        <div class="btn" id="blue"></div>
+        <div class="btn" id="green"></div>
+        <div class="btn" id="black"></div>
+
+    </div>
+</body>
+<script>
+    const h1 = document.querySelector('h1')
+    const h3 = document.querySelector('h3')
+
+    document.getElementById('red').addEventListener('click',function(){
+        document.body.style.backgroundColor = 'red'
+        h1.innerHTML = 'Red'
+        h1.style.color = "white"
+        h3.innerHTML = ""
+    })
+    document.getElementById('yellow').addEventListener('click',function(){
+        document.body.style.backgroundColor = 'yellow'
+        h1.innerHTML = 'YELLOW'
+        h1.style.color = "black"
+        h3.innerHTML = ""
+    })
+    document.getElementById('blue').addEventListener('click',function(){
+        document.body.style.backgroundColor = 'blue'
+        h1.innerHTML = 'BLUE'
+        h1.style.color = "white"
+        h3.innerHTML = ""
+    })
+    document.getElementById('green').addEventListener('click',function(){
+        document.body.style.backgroundColor = 'green'
+        h1.innerHTML = 'GREEN'
+        h1.style.color = "white"
+        h3.innerHTML = ""
+    })
+    document.getElementById('black').addEventListener('click',function(){
+        document.body.style.backgroundColor = 'black'
+        h1.innerHTML = 'BLACK'
+        h1.style.color = "white"
+        h3.innerHTML = ""
+    })
+</script>
+</html>

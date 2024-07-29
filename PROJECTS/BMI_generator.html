@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI GENERATOR</title>
+    <style>
+        body {
+            background-color: rgb(16, 26, 22);
+            /* color: white; */
+            margin-left: 200px;
+            margin-top: 200px;
+            /* background-image: url(bmi1.avif); */
+            /* background-repeat: no-repeat; */
+            width: 700px;
+
+
+        }
+
+        .container {
+            border: 2px solid rgb(230, 224, 224);
+            display: flex;
+            flex-direction: column;
+            display: ;
+            align-items: center;
+            width: 300px;
+            height: 170px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 3px rgb(36, 189, 189);
+        }
+
+        input {
+            height: 20px;
+            margin-top: 5px;
+        }
+
+        div {
+            margin-top: 5px;
+            color: black;
+            background-color: black;
+            width: 280px;
+            height: 1px;
+        }
+
+        h1 {
+            color: rgb(248, 244, 247);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>BMI GENERATOR...</h1>
+    <div class="container">
+
+        <label for="">Enter Weight in (kg)</label>
+        <input id="weight" placeholder="weight (kg)..." type="number">
+
+        <hr>
+
+        <label for="">Enter Height in (cm)</label>
+        <input id="height" placeholder="height (cm)..." type="number">
+
+        <button id="btn">Result</button>
+        <div></div>
+        <p id="result"></p>
+
+    </div>
+</body>
+<script>
+
+    document.getElementById('btn').addEventListener('click', function () {
+
+        let a;
+        let b;
+        let weightval;
+        let heightval;
+        let wvalue = document.getElementById('weight')
+        wvalue.addEventListener("input", function () {
+            a = wvalue.value;
+            weightval = parseFloat(a)
+            console.log(weightval);
+        })
+
+        let hvalue = document.getElementById('height')
+        hvalue.addEventListener("input", function () {
+            b = hvalue.value;
+            heightval = parseFloat(b)
+            console.log(heightval)
+        })
+        const sum = parseInt(weightval + heightval)
+
+        const result = document.getElementById('result')
+        result.innerText = "Sum is : " + sum +" " +(6+5)
+        console.log(sum)
+        console.log(5 + 6)
+
+        console.log("Akhil is here")
+
+    })
+
+</script>
+
+</html>
