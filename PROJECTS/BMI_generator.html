@@ -7,7 +7,7 @@
     <title>BMI GENERATOR</title>
     <style>
         body {
-            background-color: rgb(16, 26, 22);
+            background-color:black;
             /* color: white; */
             margin-left: 200px;
             margin-top: 200px;
@@ -22,83 +22,132 @@
             border: 2px solid rgb(230, 224, 224);
             display: flex;
             flex-direction: column;
-            display: ;
             align-items: center;
             width: 300px;
-            height: 170px;
+            height: 310px;
             background-color: white;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px 3px rgb(36, 189, 189);
+            box-shadow: 4px 3px 10px 1px rgb(78, 220, 161);
+            transition-duration: 0.3s;
+        }
+        .container:hover{
+          
+           transform: scale(1.02);
+            
         }
 
         input {
             height: 20px;
             margin-top: 5px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        input:hover{
+            background-color: rgb(49, 7, 60);
+            color: white;
         }
 
-        div {
-            margin-top: 5px;
-            color: black;
-            background-color: black;
-            width: 280px;
-            height: 1px;
-        }
+       
 
         h1 {
             color: rgb(248, 244, 247);
+        }
+        h3{
+            margin-bottom: 4px;
+        }
+
+        p {
+            color: black;
+            line-height: 0;
+            margin-bottom: 4px;
+        }
+        button{
+            background-color: rgb(35, 41, 189);
+            color: white;
+            font-size: medium;
+            font-weight: 700;
+            margin-top: 15px;
+            width: 102px;
+            height: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 3px black;
+        }
+        button:hover{
+            background-color: rgb(32, 165, 32);
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <h1>BMI GENERATOR...</h1>
-    <div class="container">
+    <h1>BMI Calculator 🏵️ </h1>
 
+    <form class="container">
         <label for="">Enter Weight in (kg)</label>
-        <input id="weight" placeholder="weight (kg)..." type="number">
+        <input id="weight" placeholder="weight (kg)..." type="text">
 
         <hr>
 
         <label for="">Enter Height in (cm)</label>
-        <input id="height" placeholder="height (cm)..." type="number">
+        <input id="height" placeholder="height (cm)..." type="text">
 
-        <button id="btn">Result</button>
+        <button type="submit" id="btn">Calculate</button>
         <div></div>
         <p id="result"></p>
+        <p id="warn"></p>
+        <h3>BMI WEIGHT GUIDE</h3>
+        <p>Under weight = less than 18.6</p>
+        <p>Normal Range = 18.6 and 24.9</p>
+        <p>Overweight = Greater than 24.9</p>
 
-    </div>
+    </form>
+
+
 </body>
 <script>
 
-    document.getElementById('btn').addEventListener('click', function () {
+    const form = document.querySelector('form')
 
-        let a;
-        let b;
-        let weightval;
-        let heightval;
-        let wvalue = document.getElementById('weight')
-        wvalue.addEventListener("input", function () {
-            a = wvalue.value;
-            weightval = parseFloat(a)
-            console.log(weightval);
-        })
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
 
-        let hvalue = document.getElementById('height')
-        hvalue.addEventListener("input", function () {
-            b = hvalue.value;
-            heightval = parseFloat(b)
-            console.log(heightval)
-        })
-        const sum = parseInt(weightval + heightval)
+        const height = parseInt(document.querySelector('#height').value)
+        const weight = parseInt(document.querySelector('#weight').value)
+        const result = document.getElementById('result');
+        const warn =   document.getElementById('warn');
 
-        const result = document.getElementById('result')
-        result.innerText = "Sum is : " + sum +" " +(6+5)
-        console.log(sum)
-        console.log(5 + 6)
+        if (weight === '' || weight < 0 || isNaN(weight)) {
+            result.innerHTML = `please enter valid weight ${weight}`
+        }
+        else if (height === '' || height < 0 || isNaN(height)) {
+            result.innerHTML = `please enter valid height : ${height}`;
+        }
+        else {
+            var bmi = (weight / ((height * height) / 10000)).toFixed(2)
+            // show the result
+            result.innerHTML = "Your BMI is : " + bmi;
 
-        console.log("Akhil is here")
+            if(bmi < 18.6){
+                warn.style.color = "red"
+                const element =   warn.innerHTML = "You are Under Weight 😢"
+            }
+            else if(bmi > 19.6 && bmi <24.9){
+                 warn.style.color = "green"
+                const element =   warn.innerHTML = "Your weight is Normal😎 "
+            }
+            else {
+                 warn.style.color = "blue"
+                const element =   warn.innerHTML = "You are over Weight 😱 "
+            }
+                
 
-    })
+        }
+    }
+)
+
+
+
+
 
 </script>
 
