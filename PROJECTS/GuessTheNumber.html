@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body {
+            background-color: rgb(6, 38, 67);
+            margin-top: 100px;
+            margin-left: 50px;
+        }
+
+        .container {
+            background-color: white;
+            border: 2px solid white;
+            box-shadow: 0px 0px 5px 2px rgb(19, 159, 172);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+
+        }
+
+        input {
+            width: 90px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            line-height: 1px;
+            color: rgb(149, 9, 133);
+        }
+
+        p {
+            line-height: 3px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .guessfield {
+            width: 150px;
+            height: 25px;
+            border-radius: 2px;
+            box-shadow: 2px 2px 5px green;
+        }
+
+        .guessfield:hover {
+            background-color: rgba(15, 106, 152, 0.91);
+            color: white;
+            font-weight: 500;
+        }
+
+        .guessSubmit {
+            margin-top: 15px;
+            height: 25px;
+            width: 150px;
+            background-color: rgb(108, 227, 108);
+            box-shadow: 2px 2px 5px;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: 40px;
+            color: rgb(144, 15, 133);
+            font-weight: 700;
+        }
+        .resultParas{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        #result{
+            color: white;
+            background-color: rgb(15, 15, 97);
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 2px rgb(32, 227, 32);
+            width: 90px;
+            height: 20px;
+            text-align: center;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        #note{
+            color: rgb(13, 159, 13);
+        }
+        #reload{
+            position: relative;
+            margin-right: -300px;
+            border-radius: 15px;
+            height: 25px;
+            background-color: rgb(59, 194, 59);
+            box-shadow: 2px 2px 5px;  
+            transition-duration: 0.1s;
+        }
+        #reload:hover{
+            transform: scale(1.07);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+        <h1>(NGG)</h1>
+        <p>Try and guess a random number between 1 and 100</p>
+        <p>You have 100 attempts to guess the right number.</p>
+        <br>
+        <form class="form">
+            <label for="">Guess a number</label>
+            <input type="text" name="guess " id="guessfield" class="guessfield">
+            <!-- <input type="submit" name="submit" id="subt" class="guessSubmit" value="submit guess"> -->
+            <button type="submit" id="subt" class="guessSubmit">Submit Guess</button>
+        </form>
+
+        <div class="resultParas">
+            <p>Previous guess <span class="guesses" id="guesses"></span></p>
+            <p>Guesses Remaining <span id="lastResult">5</span></p>
+            <p id="result"></p>
+            <p id="note"></p>
+            <button id="reload">Restart</button>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    var cntRem = 5;
+    var prize  = 100;
+
+    const randomVal = parseInt(Math.random() * 10 + 1)
+    console.log(randomVal)
+
+    const submit = document.getElementById('subt')
+    submit.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        const preGuess = document.getElementById('guesses')
+        const note     = document.getElementById('note')
+        const inputNum = parseInt(document.getElementById('guessfield').value)
+
+        const a = document.getElementById('guessfield')
+        a.value= '';
+        
+        preGuess.innerHTML += inputNum + ",";
+
+
+        //comparing randomVal and inputNum
+        if (randomVal === inputNum) {
+            const result = document.getElementById('result')
+            result.innerHTML = "Correct"
+            note.innerHTML = `Your Score is ${prize}`
+            console.log('correct')
+            cntRem = 5;
+        }
+        if (randomVal !== inputNum) {
+            const result = document.getElementById('result')
+            result.innerHTML = "Incorrect"
+            console.log('Incorrect')
+        }
+
+      // handling cntRem variable
+        if(cntRem===1){
+            note.innerHTML = `Guess Number was ${randomVal}`
+            
+            cntRem = 5;
+        }
+        // changing value in guess remaining
+          const remaining = document.getElementById('lastResult')
+            remaining.innerHTML =  cntRem
+          
+        cntRem--;
+        prize = prize-10;
+
+    })
+
+    const reload   = document.getElementById('reload')
+     reload.addEventListener('click', ()=>{
+        window.location.reload();
+     })
+</script>
+
+</html>
