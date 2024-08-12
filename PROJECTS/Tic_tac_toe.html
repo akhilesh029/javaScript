@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic tac toe</title>
+    <style>
+        body {
+            background-color: rgb(7, 1, 21);
+            color: white;
+            margin-top: 100px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main {
+            padding: 10px;
+            background-color: rgb(252, 252, 252);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            
+        }
+
+        .container {
+            background-color: rgb(57, 16, 56);
+            position: relative;
+            padding: 15px;
+            border-radius: 5px;
+            height: 350px;
+
+        }
+
+        #box {
+            background-color: #eff5f4;
+            color: rgb(5, 1, 8);
+            width: 75px;
+            height: 75px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 65px;
+            transition-duration: 0.2s;
+        }
+
+        #box:hover {
+            transform: scale(1.08);
+        }
+
+        .first {
+            /* background-color: yellow; */
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            padding-bottom: 5px;
+        }
+
+        .second {
+            /* background-color: red; */
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            padding-bottom: 5px;
+        }
+
+        .third {
+            /* background-color: blue; */
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 45px;
+            line-height: 2px;
+        }
+
+        p {
+            color: white;
+            text-align: center;
+            margin-top: 35px;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .user {
+            margin-top: 75px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width: 170px;
+            height: 150px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 2px 2px 4px 5px black;
+        }
+
+        input {
+            height: 25px;
+            background-color: rgb(68, 7, 60);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 2px 2px rgb(3, 4, 68);
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: white;
+            background-color: rgb(61, 15, 61);
+            border-radius: 5px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            width: 100px;
+            height: 35px;
+            color: white;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: peru;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: rgba(84, 213, 84, 0.756);
+            color: black;
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        button.clicked {
+            background-color: rgb(44, 225, 96);
+            transform: scale(0);
+        }
+
+        img.clicked {
+            box-shadow: 0px 0px 20px 10px rgb(16, 211, 55);
+            transform: scale(1.1);
+            transition-duration: 0.6s;
+        }
+        .turn1:active{
+            background-color: green;
+        }
+        #Refresh{
+            margin-top: 350px;
+            background-color: rgb(113, 228, 81);
+            box-shadow: 2px 2px 3px 2px black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <h2>(Developer : Akhil)</h2>
+    <div class="main">
+        <button id="turn1" type="submit">user1</button>
+        <div class="user">
+            <h2>Player 1</h2>
+            <img id="image1" src="WhatsApp Image 2023-07-08 at 22.18.54.jpg" alt="">
+            <form>
+                <input id="userone" placeholder="Enter Name..." type="text">
+                <button id="btnOne">Submit</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <div class="first">
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+            </div>
+            <div class="second">
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+            </div>
+            <div class="third">
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+                <div id="box" class="box"></div>
+            </div>
+            <hr>
+            <p id="para">Result</p>
+
+        </div>
+
+        <div class="user">
+            <h2>Player 2</h2>
+            <img id="image2" src="WhatsApp Image 2023-07-08 at 22.17.20.jpg" alt="">
+            <form>
+                <input id="usertwo" placeholder="Enter Name..." type="text">
+                <button id="btntwo">Submit</button>
+            </form>
+        </div>
+        <button id="turn2" type="submit">user2</button>
+        <button id="Refresh">Restart</button>
+
+    </div>
+
+</body>
+<script>
+
+
+const refresh = document.getElementById('Refresh')
+      refresh.addEventListener('click', ()=>{
+        window.location.reload()
+      })
+
+    // -----------fill array--------------------
+    let arr = []
+    function fillArr(i, text) {
+        arr[i] = text
+        // console.log(arr)
+    }
+
+
+    // for user1
+    let user1 = null
+    const btnone = document.getElementById('btnOne')
+    btnone.addEventListener('click', (e) => {
+        e.preventDefault()
+        const username = document.getElementById('userone').value
+        user1 = username
+        if (username != '') {
+            btnone.classList.add('clicked')
+        }
+
+    })
+
+    // for user2
+    let user2 = null
+    const btntwo = document.getElementById('btntwo')
+    btntwo.addEventListener('click', (e) => {
+        e.preventDefault()
+        const username = document.getElementById('usertwo').value
+        user2 = username
+        if (username != '') {
+            btntwo.classList.add('clicked')
+        }
+    })
+    // let user1 = "A"
+    // let user2 = "B"
+
+    //-----------------turn---------------------
+    const turn1 = document.getElementById('turn1')
+    const turn2 = document.getElementById('turn2')
+
+    turn1.addEventListener('click', ()=>{
+        turn1.classList.add('clicked')
+        turn2.classList.add('clicked')
+        image1.classList.add('clicked')
+    })
+    turn2.addEventListener('click', ()=>{
+        turn1.classList.add('clicked')
+        turn2.classList.add('clicked')
+        image2.classList.add('clicked')
+    })
+
+    let turn = 1
+    // user1
+    function checkTurn(TRN) {
+        turn = TRN
+    }
+    turn1.addEventListener('click', () => {
+        turn = 1
+        checkTurn(turn)
+    })
+    // user2
+    turn2.addEventListener('click', () => {
+        turn = 2
+        checkTurn(turn)
+    })
+
+    //----------tei check-----------------
+    const para = document.getElementById('para')
+    function TieCheck(cnt) {
+
+        console.log(turn)
+
+        let tiecnt = 0
+        let winner = null
+        let num = 0;
+        let extraNum = 0
+        let text = ''
+        if (cnt >= 5) {
+            // first row check
+            for (let i = 0; i < 2; i++) {
+                text = arr[i]
+                if (arr[i] == arr[i + 1] && arr[i] != null) {
+                    num++;
+                }
+            }
+            if (num == 2) {
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+
+            // second row check
+            num = 0
+            text = ''
+            for (let i = 3; i < 5; i++) {
+                text = arr[i]
+                if (arr[i] == arr[i + 1] && arr[i] != null) {
+                    num++;
+                }
+            }
+            if (num == 2) {
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // third row check
+            num = 0
+            text = ''
+            for (let i = 6; i < 8; i++) {
+                text = arr[i]
+                if (arr[i] == arr[i + 1] && arr[i] != null) {
+                    num++;
+                }
+            }
+            if (num == 2) {
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // first column check
+            text = ''
+            let i = 0
+            text = arr[i]
+            if (arr[0] == arr[3] && arr[3] == arr[6] && arr[0] != null) {
+                num = 2
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // second column check
+            text = ''
+            i = 1
+            text = arr[i]
+            if (arr[1] == arr[4] && arr[4] == arr[7] && arr[1] != null) {
+                num = 2
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // third column check
+            text = ''
+            i = 2
+            text = arr[i]
+            if (arr[2] == arr[5] && arr[5] == arr[8] && arr[2] != null) {
+                num = 2
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // diagonal check
+            text = ''
+            i = 0
+            text = arr[i]
+            if (arr[0] == arr[4] && arr[4] == arr[8] && arr[0] != null) {
+                num = 2
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+            // diagonal check
+            text = ''
+            i = 2
+            text = arr[i]
+            if (arr[2] == arr[4] && arr[4] == arr[6] && arr[2] != null) {
+                num = 2
+                if (text == "X" && turn == 1) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "X" && turn == 2) {
+                    winner = `${user2} is WINNER`
+                }
+                else if (text == "O" && turn == 2) {
+                    winner = `${user1} is WINNER`
+                }
+                else if (text == "O" && turn == 1) {
+                    winner = `${user2} is WINNER`
+                }
+                tiecnt++
+                extraNum = num
+            }
+        }
+        //final result
+        if (cnt < 9 && winner == null) {
+
+        }
+        else {
+            if (tiecnt == 2) {
+                para.innerHTML = 'Game Tied...(play again) 1'
+            }
+            else if (extraNum != 2) {
+                para.innerHTML = 'Game Tied...(play again) 2'
+            }
+            else if (winner == null) {
+                para.innerHTML = 'Game Tied...(play again) 3'
+            }
+            else {
+                para.innerHTML = winner
+            }
+        }
+
+    }
+
+    // ------------fill box-------------------
+    let state = true
+    var cnt = 0
+    let divs = document.getElementsByClassName('box')
+    let len = 0
+    for (let i = 0; i < divs.length; i++) {
+        len++
+
+        divs[i].addEventListener('click', () => {
+            // highlight using state
+            const Image1 = document.getElementById('image1')
+            const Image2 = document.getElementById('image2')
+
+
+            if (state === true) {
+
+                if (turn == 1) {
+                    Image2.classList.add('clicked')
+                    Image1.classList.remove('clicked')
+                }
+                else {
+                    Image1.classList.add('clicked')
+                    Image2.classList.remove('clicked')
+                }
+                // Image2.style.boxShadow = "0px 0px 10px 10px green"
+                // Image1.style.boxShadow = "none"
+                cnt++
+                console.log(i)
+                divs[i].textContent = 'X'
+                fillArr(i, "X")
+                state = false
+                //handleResult(cnt)
+                if (cnt >= 5) {
+                    TieCheck(cnt)
+                }
+            }
+            else {
+                if (turn == 2) {
+                    Image2.classList.add('clicked')
+                    Image1.classList.remove('clicked')
+                }
+                else {
+                    Image1.classList.add('clicked')
+                    Image2.classList.remove('clicked')
+                }
+
+                // Image1.style.boxShadow = "0px 0px 10px 10px green"
+                // Image2.style.boxShadow = "none"
+
+                cnt++
+                console.log(i)
+                divs[i].textContent = 'O'
+                fillArr(i, "O")
+                state = true
+                //handleResult(cnt)
+                if (cnt >= 5) {
+                    TieCheck(cnt)
+                }
+            }
+        })
+
+    }
+
+</script>
+
+</html>
